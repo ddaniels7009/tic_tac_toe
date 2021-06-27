@@ -1,6 +1,8 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .square{
@@ -28,4 +30,26 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 150;
+}
+.results{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 660px;
+    height: 200px;
+    background-color: tomato;
+}
+button {
+    height: 50px;
+    width: 400px;
+}
+
+#resultsTextBox{
+    display: flex;
+    height: 100px;
+    width: 660px;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
 }
