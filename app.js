@@ -1,12 +1,12 @@
 
-body = document.body;
+
 
 // CREATE A GAME, PLAYER, AND GAMEBOARD OBJECT
 
 
 // STORE THE GAMEBOARD INSIDE AN ARRAY INSIDE OF A GAMEBOARD OBJECT --- USE A MODULE SINCE YOU ONLY HAVE ONE OF THEM
 const board = (function () {
-
+        body = document.body;
     let rows = document.getElementsByClassName('rows');
     let squares = document.getElementsByClassName('square');
     let textContainer = document.getElementsByClassName('textContainer');
@@ -53,27 +53,27 @@ const board = (function () {
 
         const resultsTextBox = document.createElement('div');
         resultsTextBox.setAttribute('id', 'resultsTextBox');
-        resultsTextBox.innerText = "jj";
+        resultsTextBox.innerText = "Play Game";
         resultsPanel.appendChild(resultsTextBox);
 
         // Create reset button DOM elements
         let resetButton = document.createElement('button');
         resetButton.innerText = "New Game"
         resultsPanel.appendChild(resetButton);
-        resetButton.addEventListener('click', function () { deleteBoard(); createBoard(); placeMarker("X");})
+        resetButton.addEventListener('click', function () { deleteBoard() })
 
     }
 
     //Create initial board
     createBoard();
 
-    // Delete the board at the end of the game.
+    // Delete the board contents to start a new game.
     const deleteBoard = function () {
 
-        for (let i = 1; i < 4; i++) {
-            body.removeChild(document.getElementById(i));
+        for (let i = 0; i < 9; i++) {
+            textContainer[i].innerText = "";
         }
-        body.removeChild(resultsPanel[0]);
+        resultsTextBox.innerText = "";
 
     }
 
@@ -83,7 +83,7 @@ const board = (function () {
         for (let i = 0; i < 9; i++) {
 
             if (e == "X") {
-
+                
                 if ((textContainer[i].innerText == "X" || textContainer[i].innerText == "O")) {
 
                 }
