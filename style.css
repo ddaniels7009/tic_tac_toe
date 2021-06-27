@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.square{
+    height: 200px;
+    width: 200px;
+    background-color: teal;
+    margin: 10px;
+}
+
+.rows {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 220px;
+    width: 660px;
+    background-color: thistle;
+}
+
+.textContainer {
+    margin: 0;
+    padding: 0;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150;
+}
