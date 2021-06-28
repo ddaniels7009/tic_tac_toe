@@ -1,14 +1,13 @@
 
+
 // CREATE A GAME, PLAYER, AND GAMEBOARD OBJECT
 
-
-// STORE THE GAMEBOARD INSIDE AN ARRAY INSIDE OF A GAMEBOARD OBJECT --- USE A MODULE SINCE YOU ONLY HAVE ONE OF THEM
+// STORE THE GAMEBOARD INSIDE AN ARRAY INSIDE OF A GAMEBOARD OBJECT --- USE A MODULE
 const board = (function () {
-    body = document.body;
+body = document.body;
 let rows = document.getElementsByClassName('rows');
-let squares = document.getElementsByClassName('square');
 let textContainer = document.getElementsByClassName('textContainer');
-let resultsPanel = document.getElementsByClassName('results');
+
 
 // Remove if not working
 let turn = 0;
@@ -23,6 +22,10 @@ let gameBoard = [
 
 const createBoard = function () {
 
+    let title = document.createElement('div');
+    title.setAttribute('id', "title");
+    title.innerText = "Tic Tac Toe"
+    body.appendChild(title);
 
     // Create 3 rows
     for (let i = 0; i < 3; i++) {
@@ -57,7 +60,7 @@ const createBoard = function () {
 
     const resultsTextBox = document.createElement('div');
     resultsTextBox.setAttribute('id', 'resultsTextBox');
-    resultsTextBox.innerText = "Play Game";
+    resultsTextBox.innerText = "X Makes First Move";
     resultsPanel.appendChild(resultsTextBox);
 
     // Create reset button DOM elements
@@ -78,17 +81,18 @@ const deleteBoard = function () {
         textContainer[i].innerText = "";
     }
     resultsTextBox.innerText = "";
+    turn = 0;
 
 }
 
 // Must call this function for it to execute
 const placeMarker = function (e) {
 
-    if(e.innerText == "" && (turn % 2 == 0)){
+    if(e.innerText == "" && (turn % 2 == 0) && game.checkForWin() != "game over"){
     e.innerText = "X";
     turn++;
     }
-    else if(e.innerText == "" && (turn % 2 !=0)){
+    else if(e.innerText == "" && (turn % 2 !=0) && game.checkForWin() != "game over"){
         e.innerText = "O";
         turn++;
     }
@@ -100,7 +104,7 @@ const placeMarker = function (e) {
 // Call initial placemarker
 placeMarker("X");
 
-return { gameBoard, placeMarker, textContainer, createBoard, resultsPanel, resultsTextBox };
+return { placeMarker, createBoard, textContainer, resultsTextBox };
 
 
 })();
@@ -218,106 +222,13 @@ const checkForWin = function () {
 
     }
     else {
+        board.resultsTextBox.innerText = "";
         return "";
     }
 
 
 }
 
-
-
 return { checkForWin };
 
 })();
-
-
-
-
-
-
-
-
-
-
-
-//**Factories are simply plain old JavaScript functions that return objects for us to use in our code. 
-
-// THIS IS A FACTORY FUNCTION --- USED ID YOU NEED MULTIPLES OF THINGS SUCH AS PLAYERS
-
-/* const counterCreator = () => {
-let count = 0;
-return () => {
-  console.log(count);
-  count++;
-};
-};
-const counter = counterCreator();
-counter(); // 0
-counter(); // 1
-counter(); // 2
-counter(); // 3 */
-
-
-// THIS IS A MODULE --- USED WHEN YOU ONLY NEED ONE OF A CERTAIN THING SUCH AS A GAMEBOARD OR DISPLAY CONTROLLER
-
-/* const calculator = (() => {
-const add = (a, b) => a + b;
-const sub = (a, b) => a - b;
-const mul = (a, b) => a * b;
-const div = (a, b) => a / b;
-return {
-  add,
-  sub,
-  mul,
-  div,
-};
-})();
-calculator.add(3,5) // 8
-calculator.sub(6,2) // 4
-calculator.mul(14,5534) // 77476 */
-
-
-// Factory function example
-/*   const FactoryFunction = string => {
-const capitalizeString = () => string.toUpperCase();
-const printString = () => console.log(`----${capitalizeString()}----`);
-return { printString };
-};
-const taco = FactoryFunction('taco');
-printString(); // ERROR!!
-capitalizeString(); // ERROR!!
-taco.capitalizeString(); // ERROR!!
-taco.printString(); // this prints "----TACO----" */
-
-
-
-
-/*   const Player = (name, level) => {
-let health = level * 2;
-const getLevel = () => level;
-const getName  = () => name;
-const die = () => {
-  // uh oh
-};
-const damage = x => {
-  health -= x;
-  if (health <= 0) {
-    die();
-  }
-};
-const attack = enemy => {
-  if (level < enemy.getLevel()) {
-    damage(1);
-    console.log(`${enemy.getName()} has damaged ${name}`);
-  }
-  if (level >= enemy.getLevel()) {
-    enemy.damage(1);
-    console.log(`${name} has damaged ${enemy.getName()}`);
-  }
-};
-return {attack, damage, getLevel, getName}
-};
-const jimmie = Player('jim', 10);
-const badGuy = Player('jeff', 5);
-jimmie.attack(badGuy); */
-
