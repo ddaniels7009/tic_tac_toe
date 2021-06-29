@@ -8,8 +8,6 @@ body = document.body;
 let rows = document.getElementsByClassName('rows');
 let textContainer = document.getElementsByClassName('textContainer');
 
-
-// Remove if not working
 let turn = 0;
 
 
@@ -60,7 +58,7 @@ const createBoard = function () {
 
     const resultsTextBox = document.createElement('div');
     resultsTextBox.setAttribute('id', 'resultsTextBox');
-    resultsTextBox.innerText = "X Makes First Move";
+    resultsTextBox.innerText = "X Makes First Move.";
     resultsPanel.appendChild(resultsTextBox);
 
     // Create reset button DOM elements
@@ -82,6 +80,8 @@ const deleteBoard = function () {
     }
     resultsTextBox.innerText = "";
     turn = 0;
+    resultsTextBox.innerText = "X Makes First Move.";
+    
 
 }
 
@@ -109,8 +109,6 @@ return { placeMarker, createBoard, textContainer, resultsTextBox };
 
 })();
 
-//board.resultsTextBox.innerText = "ggg"////////////////////////////////////
-
 
 // CREATE PLAYER OBJECT USING A FACTORY --- SINCE YOU HAVE MORE THAN ONE OF THEM
 // Literally only need to store the player's name's
@@ -134,44 +132,45 @@ const game = (function () {
 
 
 const checkForWin = function () {
+    
 
     //*** Check X's ***
 
     // Checks for horizontal win
     if (board.textContainer[0].innerText == "X" && board.textContainer[1].innerText == "X" && board.textContainer[2].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over"
 
     }
     else if (board.textContainer[3].innerText == "X" && board.textContainer[4].innerText == "X" && board.textContainer[5].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over";
     }
     else if (board.textContainer[6].innerText == "X" && board.textContainer[7].innerText == "X" && board.textContainer[8].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over";
     }
     // Check for diagonal win
     else if (board.textContainer[0].innerText == "X" && board.textContainer[4].innerText == "X" && board.textContainer[8].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over";
     }
     else if (board.textContainer[2].innerText == "X" && board.textContainer[4].innerText == "X" && board.textContainer[6].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over";
     }
     // Check for vertical win
     else if (board.textContainer[0].innerText == "X" && board.textContainer[3].innerText == "X" && board.textContainer[6].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over";
 
     }
     else if (board.textContainer[1].innerText == "X" && board.textContainer[4].innerText == "X" && board.textContainer[7].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over";
     }
     else if (board.textContainer[2].innerText == "X" && board.textContainer[5].innerText == "X" && board.textContainer[8].innerText == "X") {
-        board.resultsTextBox.innerText = "Game over. X wins";
+        board.resultsTextBox.innerText = "Game over. X wins!";
         return "game over";
 
     }
@@ -180,47 +179,48 @@ const checkForWin = function () {
 
     // Checks for horizontal win
     else if (board.textContainer[0].innerText == "O" && board.textContainer[1].innerText == "O" && board.textContainer[2].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
     else if (board.textContainer[3].innerText == "O" && board.textContainer[4].innerText == "O" && board.textContainer[5].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
     else if (board.textContainer[6].innerText == "O" && board.textContainer[7].innerText == "O" && board.textContainer[8].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
     // Check for diagonal win
     else if (board.textContainer[0].innerText == "O" && board.textContainer[4].innerText == "O" && board.textContainer[8].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
     else if (board.textContainer[2].innerText == "O" && board.textContainer[4].innerText == "O" && board.textContainer[6].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
     // Check for vertical win
     else if (board.textContainer[0].innerText == "O" && board.textContainer[3].innerText == "O" && board.textContainer[6].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
     else if (board.textContainer[1].innerText == "O" && board.textContainer[4].innerText == "O" && board.textContainer[7].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
     else if (board.textContainer[2].innerText == "O" && board.textContainer[5].innerText == "O" && board.textContainer[8].innerText == "O") {
-        board.resultsTextBox.innerText = "Game over. O wins";
+        board.resultsTextBox.innerText = "Game over. O wins!";
         return "game over";
 
     }
+   
     else {
         board.resultsTextBox.innerText = "";
         return "";
